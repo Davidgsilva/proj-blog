@@ -38,7 +38,7 @@ export default function Home() {
             {/* Hero Section */}
             <section className="mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-purple-800 mb-4 leading-tight purple-text-dark">
-                David's Blog: Insights and Stories from the Tech World
+                Insider: Insights and Stories
               </h2>
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                 Thoughts, stories, and ideas on web development, design, and technology from industry experts and enthusiasts.
