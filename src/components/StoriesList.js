@@ -69,7 +69,7 @@ export default function StoriesList() {
       <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Submitted Stories</h2>
       
       {stories.map((story) => (
-        <div key={story.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+        <div key={story.id} className="bg-white dark:bg-purple-900 rounded-lg shadow-md p-6">
           <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{story.title}</h3>
           <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm mb-4">
             <span className="mr-2">By {story.author}</span>

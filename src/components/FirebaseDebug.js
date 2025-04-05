@@ -56,7 +56,7 @@ export default function FirebaseDebug() {
   const statusColor = missingVars > 0 ? 'text-red-600' : 'text-green-600';
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
+    <div className="bg-white dark:bg-purple-900 rounded-lg shadow-lg p-6 mb-8">
       <div className="flex justify-between items-center">
         <h3 className="text-xl font-bold text-gray-900 dark:text-white">Firebase Configuration Status</h3>
         <span className={`font-medium ${statusColor}`}>

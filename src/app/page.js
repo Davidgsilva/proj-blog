@@ -40,7 +40,7 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-bold text-purple-800 mb-4 leading-tight purple-text-dark">
                 Insider: Insights and Stories
               </h2>
-              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+              <p className="text-lg text-purple-700 mb-6 leading-relaxed">
                 Thoughts, stories, and ideas on web development, design, and technology from industry experts and enthusiasts.
               </p>
               <div className="h-1 w-24 bg-purple-700 mb-8 purple-accent"></div>

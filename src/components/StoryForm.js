@@ -46,7 +46,7 @@ export default function StoryForm({ onSubmit }) {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+    <div className="bg-white dark:bg-purple-900 rounded-lg shadow-lg p-6">
       <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Share Your Story</h3>
       
       {submitMessage.message && (
