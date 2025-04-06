@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { getStories } from '../services/firebase';
+import Link from 'next/link';
 
 export default function StoriesList() {
   const [stories, setStories] = useState([]);
@@ -42,7 +43,7 @@ export default function StoriesList() {
   if (loading) {
     return (
       <div className="flex justify-center items-center py-10">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500"></div>
       </div>
     );
   }
@@ -66,19 +67,43 @@ export default function StoriesList() {
 
   return (
     <div className="space-y-8">
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Submitted Stories</h2>
-      
       {stories.map((story) => (
         <div key={story.id} className="bg-white dark:bg-purple-900 rounded-lg shadow-md p-6">
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{story.title}</h3>
+          <Link href={`/story/${story.id}`} className="hover:underline">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{story.title}</h3>
+          </Link>
           <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm mb-4">
             <span className="mr-2">By {story.author}</span>
             <span>•</span>
             <span className="ml-2">{formatDate(story.createdAt)}</span>
           </div>
-          <div className="prose dark:prose-invert max-w-none">
-            <p className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap">{story.content}</p>
+          
+          {story.tags && story.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-4">
+              {story.tags.map((tag, index) => (
+                <span 
+                  key={index} 
+                  className="bg-purple-100 text-purple-800 dark:bg-purple-800 dark:text-purple-100 px-2 py-0.5 rounded-full text-xs"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+          
+          <div className="prose dark:prose-invert max-w-none mb-4">
+            <p className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap line-clamp-3">
+              {story.content.substring(0, 150)}
+              {story.content.length > 150 ? '...' : ''}
+            </p>
           </div>
+          
+          <Link 
+            href={`/story/${story.id}`}
+            className="inline-block px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors text-sm font-medium"
+          >
+            Read More
+          </Link>
         </div>
       ))}
     </div>

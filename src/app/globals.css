@@ -93,3 +93,27 @@ body {
     opacity: 0;
   }
 }
+
+input::placeholder {
+  color: #ffffff;
+}
+
+textarea::placeholder {
+  color: #ffffff;
+}
+
+textarea::-webkit-input-placeholder {
+  color: #ffffff;
+}
+
+textarea:-moz-placeholder {
+  color: #ffffff;
+}
+
+textarea::-moz-placeholder {
+  color: #ffffff;
+}
+
+textarea:-ms-input-placeholder {
+  color: #ffffff;
+}

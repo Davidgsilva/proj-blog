@@ -7,6 +7,7 @@ export default function StoryForm({ onSubmit }) {
     title: '',
     content: '',
     author: '',
+    tags: [],
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState({ type: '', message: '' });
@@ -29,7 +30,7 @@ export default function StoryForm({ onSubmit }) {
       await onSubmit(formData);
       
       // Reset form after successful submission
-      setFormData({ title: '', content: '', author: '' });
+      setFormData({ title: '', content: '', author: '', tags: [] });
       setSubmitMessage({ 
         type: 'success', 
         message: 'Story submitted successfully!' 
@@ -71,7 +72,7 @@ export default function StoryForm({ onSubmit }) {
             value={formData.title}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border rounded-md bg-white dark:bg-purple-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
             placeholder="Enter story title"
           />
         </div>
@@ -87,7 +88,7 @@ export default function StoryForm({ onSubmit }) {
             value={formData.author}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border rounded-md bg-white dark:bg-purple-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
             placeholder="Your name"
           />
         </div>
@@ -103,15 +104,83 @@ export default function StoryForm({ onSubmit }) {
             onChange={handleChange}
             required
             rows="6"
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border rounded-md bg-white dark:bg-purple-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
             placeholder="Write your story here..."
           ></textarea>
+        </div>
+        
+        <div className="mb-6">
+          <label htmlFor="tags" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            Tags
+          </label>
+          <div className="flex flex-wrap gap-2 mb-2">
+            {formData.tags.map((tag, index) => (
+              <span 
+                key={index} 
+                className="bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100 px-3 py-1 rounded-full text-sm flex items-center"
+              >
+                {tag}
+                <button 
+                  type="button" 
+                  onClick={() => {
+                    const newTags = [...formData.tags];
+                    newTags.splice(index, 1);
+                    setFormData(prev => ({ ...prev, tags: newTags }));
+                  }}
+                  className="ml-2 text-purple-600 dark:text-purple-300 hover:text-purple-800 dark:hover:text-purple-100"
+                >
+                  ×
+                </button>
+              </span>
+            ))}
+          </div>
+          <div className="flex gap-2">
+            <input
+              type="text"
+              id="tagInput"
+              placeholder="Add a tag (e.g., sci-fi, romance)"
+              className="flex-grow px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-purple-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && e.target.value.trim()) {
+                  e.preventDefault();
+                  const newTag = e.target.value.trim().toLowerCase();
+                  if (!formData.tags.includes(newTag)) {
+                    setFormData(prev => ({
+                      ...prev,
+                      tags: [...prev.tags, newTag]
+                    }));
+                  }
+                  e.target.value = '';
+                }
+              }}
+            />
+            <button
+              type="button"
+              className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors"
+              onClick={() => {
+                const tagInput = document.getElementById('tagInput');
+                const newTag = tagInput.value.trim().toLowerCase();
+                if (newTag && !formData.tags.includes(newTag)) {
+                  setFormData(prev => ({
+                    ...prev,
+                    tags: [...prev.tags, newTag]
+                  }));
+                  tagInput.value = '';
+                }
+              }}
+            >
+              Add
+            </button>
+          </div>
+          <p className="mt-1 text-sm">
+            Popular tags: sci-fi, romance, historical, fantasy, mystery, thriller
+          </p>
         </div>
         
         <button
           type="submit"
           disabled={isSubmitting}
-          className={`w-full px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-medium ${
+          className={`w-full px-6 py-3 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors font-medium ${
             isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
           }`}
         >
