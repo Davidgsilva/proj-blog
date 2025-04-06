@@ -92,7 +92,7 @@ export default function StoriesList() {
           )}
           
           <div className="prose dark:prose-invert max-w-none mb-4">
-            <p className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap line-clamp-3">
+            <p className="text-white  whitespace-pre-wrap line-clamp-3">
               {story.content.substring(0, 150)}
               {story.content.length > 150 ? '...' : ''}
             </p>

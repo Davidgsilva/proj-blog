@@ -108,7 +108,7 @@ export default function FirebaseDebug() {
         <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
           {Object.entries(envVars).map(([key, value]) => (
             <div key={key} className="flex justify-between">
-              <span className="text-gray-700 dark:text-gray-300">{key}:</span>
+              <span className="text-white ">{key}:</span>
               <span className={value.includes('✓') ? 'text-green-600' : 'text-red-600'}>
                 {value}
               </span>

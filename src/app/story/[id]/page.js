@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../../firebase/config';
 import Link from 'next/link';
-import FlowerAnimation from '../../../components/FlowerAnimation';
+
 
 export default function StoryPage() {
   const params = useParams();
@@ -59,7 +59,6 @@ export default function StoryPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-white purple-theme">
-        <FlowerAnimation />
         <div className="max-w-4xl mx-auto px-4 py-12">
           <div className="animate-pulse">
             <div className="h-10 bg-purple-200 rounded w-3/4 mb-6"></div>
@@ -78,7 +77,6 @@ export default function StoryPage() {
   if (error) {
     return (
       <div className="min-h-screen bg-white purple-theme">
-        <FlowerAnimation />
         <div className="max-w-4xl mx-auto px-4 py-12">
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
             <strong className="font-bold">Error! </strong>
@@ -97,7 +95,6 @@ export default function StoryPage() {
   if (!story) {
     return (
       <div className="min-h-screen bg-white purple-theme">
-        <FlowerAnimation />
         <div className="max-w-4xl mx-auto px-4 py-12">
           <p className="text-gray-600">Story not found</p>
           <div className="mt-6">
@@ -112,8 +109,6 @@ export default function StoryPage() {
 
   return (
     <div className="min-h-screen bg-white purple-theme">
-      <FlowerAnimation />
-      
       {/* Header with Purple style */}
       <header className="border-b border-purple-800 sticky top-0 bg-purple-700 z-10 purple-header">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -140,7 +135,7 @@ export default function StoryPage() {
             {story.title}
           </h1>
           
-          <div className="flex flex-wrap items-center text-gray-600 dark:text-gray-300 text-sm mb-6">
+          <div className="flex flex-wrap items-center text-gray-600  text-sm mb-6">
             <span className="mr-2">By {story.author}</span>
             <span className="mx-2">•</span>
             <span>{formatDate(story.createdAt)}</span>
@@ -160,7 +155,7 @@ export default function StoryPage() {
           )}
           
           <div className="prose dark:prose-invert max-w-none">
-            <p className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap leading-relaxed">
+            <p className="whitespace-pre-wrap leading-relaxed">
               {story.content}
             </p>
           </div>

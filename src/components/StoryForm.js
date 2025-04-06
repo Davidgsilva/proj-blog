@@ -62,7 +62,7 @@ export default function StoryForm({ onSubmit }) {
       
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="title" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label htmlFor="title" className="block text-sm font-medium text-white  mb-1">
             Title
           </label>
           <input
@@ -78,7 +78,7 @@ export default function StoryForm({ onSubmit }) {
         </div>
         
         <div className="mb-4">
-          <label htmlFor="author" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label htmlFor="author" className="block text-sm font-medium text-white  mb-1">
             Author
           </label>
           <input
@@ -94,7 +94,7 @@ export default function StoryForm({ onSubmit }) {
         </div>
         
         <div className="mb-6">
-          <label htmlFor="content" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label htmlFor="content" className="block text-sm font-medium text-white  mb-1">
             Content
           </label>
           <textarea
@@ -110,7 +110,7 @@ export default function StoryForm({ onSubmit }) {
         </div>
         
         <div className="mb-6">
-          <label htmlFor="tags" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label htmlFor="tags" className="block text-sm font-medium text-white  mb-1">
             Tags
           </label>
           <div className="flex flex-wrap gap-2 mb-2">

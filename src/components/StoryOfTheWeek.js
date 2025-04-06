@@ -93,7 +93,7 @@ export default function StoryOfTheWeek() {
         ))}
       </div>
       
-      <p className="text-gray-700 mb-4 line-clamp-3">
+      <p className="text-white mb-4 line-clamp-3">
         {featuredStory.content.substring(0, 150)}
         {featuredStory.content.length > 150 ? '...' : ''}
       </p>
