@@ -68,9 +68,9 @@ export default function StoriesList() {
   return (
     <div className="space-y-8">
       {stories.map((story) => (
-        <div key={story.id} className="bg-white dark:bg-purple-900 rounded-lg shadow-md p-6">
+        <div key={story.id} className="bg-purple-50 p-6 rounded-lg border border-purple-200 shadow-md">
           <Link href={`/story/${story.id}`} className="hover:underline">
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{story.title}</h3>
+            <h3 className="text-xl font-semibold text-black mb-2 story-title font-delius">{story.title}</h3>
           </Link>
           <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm mb-4">
             <span className="mr-2">By {story.author}</span>
@@ -83,7 +83,7 @@ export default function StoriesList() {
               {story.tags.map((tag, index) => (
                 <span 
                   key={index} 
-                  className="bg-purple-100 text-purple-800 dark:bg-purple-800 dark:text-purple-100 px-2 py-0.5 rounded-full text-xs"
+                  className="bg-purple-100 text-purple-800 px-2 py-0.5 rounded-full text-xs"
                 >
                   {tag}
                 </span>
@@ -92,7 +92,7 @@ export default function StoriesList() {
           )}
           
           <div className="prose dark:prose-invert max-w-none mb-4">
-            <p className="text-white  whitespace-pre-wrap line-clamp-3">
+            <p className="text-black whitespace-pre-wrap line-clamp-3 story-content font-delius">
               {story.content.substring(0, 150)}
               {story.content.length > 150 ? '...' : ''}
             </p>
@@ -100,7 +100,7 @@ export default function StoriesList() {
           
           <Link 
             href={`/story/${story.id}`}
-            className="inline-block px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors text-sm font-medium"
+            className="inline-block px-4 py-2 text-white rounded-md bg-[var(--shannons-purple)] hover:bg-purple-700 transition-colors text-sm font-medium"
           >
             Read More
           </Link>

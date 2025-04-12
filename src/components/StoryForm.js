@@ -47,7 +47,7 @@ export default function StoryForm({ onSubmit }) {
   };
 
   return (
-    <div className="bg-white dark:bg-purple-900 rounded-lg shadow-lg p-6">
+    <div className="bg-[var(--shannons-purple)] rounded-lg shadow-lg p-6">
       <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Share Your Story</h3>
       
       {submitMessage.message && (
@@ -72,7 +72,7 @@ export default function StoryForm({ onSubmit }) {
             value={formData.title}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border rounded-md bg-white dark:bg-purple-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full px-4 py-2 border rounded-md bg-[var(--shannons-purple)] text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
             placeholder="Enter story title"
           />
         </div>
@@ -88,7 +88,7 @@ export default function StoryForm({ onSubmit }) {
             value={formData.author}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border rounded-md bg-white dark:bg-purple-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full px-4 py-2 border rounded-md bg-[var(--shannons-purple)] text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
             placeholder="Your name"
           />
         </div>
@@ -104,7 +104,7 @@ export default function StoryForm({ onSubmit }) {
             onChange={handleChange}
             required
             rows="6"
-            className="w-full px-4 py-2 border rounded-md bg-white dark:bg-purple-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full px-4 py-2 border rounded-md bg-[var(--shannons-purple)] text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
             placeholder="Write your story here..."
           ></textarea>
         </div>
@@ -139,7 +139,7 @@ export default function StoryForm({ onSubmit }) {
               type="text"
               id="tagInput"
               placeholder="Add a tag (e.g., sci-fi, romance)"
-              className="flex-grow px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-purple-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="flex-grow px-4 py-2 rounded-md bg-[var(--shannons-purple)] text-gray-900 dark:text-white"
               onKeyDown={(e) => {
                 if (e.key === 'Enter' && e.target.value.trim()) {
                   e.preventDefault();

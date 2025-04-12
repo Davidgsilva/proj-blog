@@ -8,6 +8,7 @@
   --primary-purple-light: #8b5cf6; /* Purple 500 */
   --primary-purple-lighter: #c4b5fd; /* Purple 300 */
   --primary-purple-lightest: #ede9fe; /* Purple 100 */
+  --shannons-purple: #a18aff; /* Purple 700 */
 }
 
 @theme inline {
@@ -15,6 +16,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-delius: var(--font-delius);
+  --font-delius-swash: var(--font-delius-swash-caps);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -116,4 +119,35 @@ textarea::-moz-placeholder {
 
 textarea:-ms-input-placeholder {
   color: #ffffff;
+}
+
+/* Delius Font Styles */
+.font-delius {
+  font-family: var(--font-delius), cursive;
+}
+
+/* Apply Delius font to headings */
+h1.delius-heading,
+h2.delius-heading,
+h3.delius-heading {
+  font-family: var(--font-delius), cursive;
+}
+
+/* Apply Delius font to story content */
+.story-content {
+  font-family: var(--font-delius), cursive;
+}
+
+/* Apply Delius font to story titles */
+.story-title {
+  font-family: var(--font-delius), cursive;
+}
+
+/* Delius Swash Caps Font Styles */
+.font-delius-swash {
+  font-family: var(--font-delius-swash), cursive;
+}
+
+.hero-heading {
+  font-family: var(--font-delius-swash), cursive;
 }

@@ -130,8 +130,8 @@ export default function StoryPage() {
           </Link>
         </div>
         
-        <article className="bg-white dark:bg-purple-900 rounded-lg shadow-lg p-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        <article className="bg-purple-50 p-6 rounded-lg border border-purple-200 shadow-md">
+          <h1 className="text-3xl md:text-4xl font-bold text-black mb-4 story-title font-delius">
             {story.title}
           </h1>
           
@@ -146,7 +146,7 @@ export default function StoryPage() {
               {story.tags.map((tag, index) => (
                 <span 
                   key={index} 
-                  className="bg-purple-100 text-purple-800 dark:bg-purple-800 dark:text-purple-100 px-3 py-1 rounded-full text-sm"
+                  className="bg-[var(--shannons-purple)] text-white px-3 py-1 rounded-full text-sm"
                 >
                   {tag}
                 </span>
@@ -154,8 +154,8 @@ export default function StoryPage() {
             </div>
           )}
           
-          <div className="prose dark:prose-invert max-w-none">
-            <p className="whitespace-pre-wrap leading-relaxed">
+          <div className="prose max-w-none">
+            <p className="whitespace-pre-wrap leading-relaxed story-content font-delius text-black">
               {story.content}
             </p>
           </div>

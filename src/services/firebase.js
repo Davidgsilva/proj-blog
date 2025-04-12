@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp, getApps } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs, query, orderBy, serverTimestamp } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs, query, orderBy, serverTimestamp, where, limit, doc, getDoc, deleteDoc, updateDoc } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -128,6 +128,72 @@ export const getStories = async () => {
     return stories;
   } catch (error) {
     console.error("Error fetching stories: ", error);
+    throw error;
+  }
+};
+
+// Add a subscriber to Firestore
+export const addSubscriber = async (email) => {
+  try {
+    // Check if Firebase is properly initialized
+    if (!db) {
+      throw new Error('Firestore database is not initialized');
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      throw new Error('Invalid email format');
+    }
+
+    // Check if the email already exists
+    const subscribersRef = collection(db, "subscribers");
+    const q = query(subscribersRef, where("email", "==", email));
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      return { success: false, message: 'This email is already subscribed' };
+    }
+
+    // Add the subscriber
+    const docRef = await addDoc(subscribersRef, {
+      email,
+      subscribedAt: serverTimestamp(),
+      status: 'active'
+    });
+
+    console.log('Subscriber successfully added with ID:', docRef.id);
+    return { success: true, message: 'Successfully subscribed to the newsletter' };
+  } catch (error) {
+    console.error("Error adding subscriber: ", error);
+    throw error;
+  }
+};
+
+// Get all subscribers from Firestore
+export const getSubscribers = async () => {
+  try {
+    if (!db) {
+      throw new Error('Firestore database is not initialized');
+    }
+
+    const subscribersRef = collection(db, "subscribers");
+    const q = query(subscribersRef, orderBy("subscribedAt", "desc"));
+    
+    const querySnapshot = await getDocs(q);
+    
+    const subscribers = [];
+    querySnapshot.forEach((doc) => {
+      subscribers.push({
+        id: doc.id,
+        ...doc.data(),
+        subscribedAt: doc.data().subscribedAt ? doc.data().subscribedAt.toDate() : new Date()
+      });
+    });
+    
+    return subscribers;
+  } catch (error) {
+    console.error("Error fetching subscribers: ", error);
     throw error;
   }
 };

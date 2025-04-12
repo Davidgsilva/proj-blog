@@ -74,12 +74,12 @@ export default function StoryOfTheWeek() {
   return (
     <div className="bg-purple-50 p-6 rounded-lg border border-purple-200 shadow-md">
       <div className="flex justify-between items-start mb-4">
-        <h3 className="text-xl font-bold text-purple-800">Story of the Week</h3>
+        <h3 className="text-xl font-bold text-black">Story of the Week</h3>
         <div className="bg-purple-700 text-white text-xs px-2 py-1 rounded-full">Featured</div>
       </div>
       
       <Link href={`/story/${featuredStory.id}`} className="hover:underline">
-        <h4 className="text-lg font-semibold text-gray-900 mb-2">{featuredStory.title}</h4>
+        <h4 className="text-lg font-semibold text-gray-900 mb-2 story-title font-delius">{featuredStory.title}</h4>
       </Link>
       
       <div className="flex flex-wrap gap-2 mb-3">
@@ -93,7 +93,7 @@ export default function StoryOfTheWeek() {
         ))}
       </div>
       
-      <p className="text-white mb-4 line-clamp-3">
+      <p className="text-black mb-4 line-clamp-3 story-content font-delius">
         {featuredStory.content.substring(0, 150)}
         {featuredStory.content.length > 150 ? '...' : ''}
       </p>
@@ -107,7 +107,7 @@ export default function StoryOfTheWeek() {
       
       <Link 
         href={`/story/${featuredStory.id}`}
-        className="mt-4 block w-full px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors text-sm font-medium text-center"
+        className="mt-4 block w-full px-4 py-2 bg-[var(--shannons-purple)] text-white rounded-md hover:bg-purple-700 transition-colors text-sm font-medium text-center"
       >
         Read Full Story
       </Link>
